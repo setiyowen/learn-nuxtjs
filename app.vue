@@ -17,7 +17,25 @@
 
       <main class="container mx-auto py-6 text-lg">
         <section id="pengenalan">
-          <h2 class="text-2xl font-bold mb-4">Bahan dan Cara Membuat Kopi</h2>
+          <div>
+            <h2 class="text-2xl font-bold mb-4">Bahan dan Cara Membuat Kopi</h2>
+            <div class="section w-5"></div>
+            <!-- <img
+              class="w-auto h-10 rounded-xl"
+              src="https://img.freepik.com/free-vector/coffee-love-foam-with-beans-cartoon-icon-illustration_138676-2575.jpg?w=2000"
+              alt=""
+            /> -->
+            <div>
+              <CoffeeCard
+                v-for="coffee in coffees"
+                :key="coffee.id"
+                :title="coffee.title"
+                :image="coffee.image"
+                :altText="coffee.altText"
+                :description="coffee.description"
+              />
+            </div>
+          </div>
           <div class="flex flex-wrap">
             <div class="w-full lg:w-1/2 px-4 mb-6 lg:mb-0">
               <h3 class="text-lg font-bold mb-4">Bahan</h3>
@@ -40,7 +58,7 @@
               </ol>
             </div>
           </div>
-          <p class="text-lg mt-6">
+          <p class="text-lg mt-6 flex-auto">
             Dengan minum kopi maka bisa mengurangi rasa lelah sehingga dapat
             menambah stamina atau energy. Hal ini disebabkan, kopi mengandung
             stimulan bernama kafein. <br />
@@ -53,7 +71,7 @@
         <section id="video" class="mt-12">
           <h2 class="text-2xl font-bold mb-4">Video membuat kopi</h2>
           <div class="relative">
-            <div class="flex justify-center mt-8">
+            <div class="flex justify-center mt-5">
               <div class="relative" style="height: 0; padding-bottom: 20%">
                 <iframe
                   class="w-96 h-52 rounded-xl shadow-lg"
@@ -74,3 +92,27 @@
     </div>
   </NuxtLayout>
 </template>
+<script>
+import CoffeeCard from "~/components/CoffeeCard.vue";
+
+export default {
+  components: {
+    CoffeeCard,
+  },
+  data() {
+    return {
+      coffees: [
+        {
+          id: 1,
+          title: "",
+          image:
+            "https://img.freepik.com/free-photo/cup-coffee-with-pile-coffee-beans_1112-438.jpg?size=626&ext=jpg&ga=GA1.2.815384605.1684142759&semt=sph",
+          altText: "Kopi Hitam ",
+          description:
+            "Kopi Hitam nikmati secangkir kopi hitam yang pekat dengan aroma yang khas.",
+        },
+      ],
+    };
+  },
+};
+</script>
